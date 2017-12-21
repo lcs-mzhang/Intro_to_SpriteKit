@@ -25,8 +25,8 @@ class GameScene: SKScene {
         nyanCat.position = midPoint
 
         // Define a series of animations (bounce up and down)
-        let actionMoveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.15)
-        let actionMoveDown = SKAction.moveBy(x: 0, y: -10, duration: 0.15)
+        let actionMoveUp = SKAction.moveBy(x: 0, y: 10, duration: 1)//0.15)
+        let actionMoveDown = SKAction.moveBy(x: 0, y: -10, duration: 1)//0.15)
         let actionSequence = SKAction.sequence([actionMoveUp, actionMoveDown])
         let actionRepeat = SKAction.repeatForever(actionSequence)
 
