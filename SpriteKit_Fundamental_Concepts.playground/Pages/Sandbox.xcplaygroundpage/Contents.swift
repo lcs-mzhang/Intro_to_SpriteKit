@@ -20,7 +20,6 @@ let midPoint = CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0)
 //: Notice that the size of the scene is taken from the `frame` defined earlier.
 var scene = SKScene(size: frame.size)
 
-//: Create an instance of the SKSpriteNode class using the Nyancat image.
 let temmie = SKSpriteNode(imageNamed: "temmie")
 temmie.position = midPoint
 temmie.setScale(0.45)

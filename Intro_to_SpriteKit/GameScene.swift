@@ -20,31 +20,30 @@ class GameScene: SKScene {
         // Set the midpoint value
         let midPoint = CGPoint(x: size.width / 2.0, y: size.height / 2.0)
 
-        // Add the nyan cat
-        let nyanCat = SKSpriteNode(imageNamed: "Nyancat")
-        nyanCat.position = midPoint
-
-        // Define a series of animations (bounce up and down)
-        let actionMoveUp = SKAction.moveBy(x: 0, y: 10, duration: 1)//0.15)
-        let actionMoveDown = SKAction.moveBy(x: 0, y: -10, duration: 1)//0.15)
-        let actionSequence = SKAction.sequence([actionMoveUp, actionMoveDown])
+        let temmie = SKSpriteNode(imageNamed: "temmie")
+        temmie.position = midPoint
+        temmie.setScale(0.8)
+        
+        let temmieface = SKSpriteNode(imageNamed: "temmie_face")
+        temmieface.position = midPoint
+        temmieface.setScale(0.8)
+        
+        let actionMoveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.05)
+        let actionMoveDown = SKAction.moveBy(x: 0, y: -10, duration: 0.05)
+        let actionMoveLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.05)
+        let actionMoveRight = SKAction.moveBy(x: 10, y: 0, duration: 0.05)
+        
+        let actionSequence = SKAction.sequence([actionMoveUp, actionMoveDown,actionMoveLeft,actionMoveRight])
         let actionRepeat = SKAction.repeatForever(actionSequence)
-
-        // Attach the bounce up and down actions to the cat
-        nyanCat.run(actionRepeat)
+        temmie.run(actionRepeat)
+        temmie.zPosition = 10  // Ensure sprite is above background
+        self.addChild(temmie) // Add to the scene
         
-        // Ensure the sprite ends up in a layer above the background node
-        nyanCat.zPosition = 10
-        
-        // Add the cat to the scene
-        self.addChild(nyanCat)
-        
-        // Get a starfield and add to scene
-        let stars = StarField(within: self.frame)
-        self.addChild(stars)
-        
-        // Add the rainbow stream (it automatically adds itself to the scene)
-        let _ = RainbowStream(on: self, target: nyanCat)
+        let actionSequence2 = SKAction.sequence([actionMoveDown, actionMoveUp,actionMoveRight, actionMoveLeft])
+        let actionRepeat2 = SKAction.repeatForever(actionSequence2)
+        temmieface.run(actionRepeat2)
+        temmieface.zPosition = 11
+        self.addChild(temmieface)
         
         // Make nyan cat happy – play music forever!
         let backgroundMusic = SKAudioNode(fileNamed: "nyan-cat-tune.mp3")

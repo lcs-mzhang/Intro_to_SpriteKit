@@ -21,7 +21,7 @@ class ViewController: NSViewController {
         if let view = self.skView {
             
             // Set the size for the scene
-            let sceneSize = CGSize(width: 800, height: 400)
+            let sceneSize = CGSize(width: 600, height: 600)
             
             // Load the SKScene from the GameScene class
             let scene = GameScene(size: sceneSize)
